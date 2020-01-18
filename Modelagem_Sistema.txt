@@ -1,0 +1,11 @@
+Sistema de Comércio
+
+Telas
+- Acesso
+- Vendas
+- Cadastro de produtos
+- Estoque
+- Emissão de comprovante de pgto
+- Nota
+- Fornecedeores
+- Relatórios
