@@ -47,7 +47,7 @@ namespace CamadaDados
                 //Inserindo na tabela
                 SqlCommand sqlCMD = new SqlCommand();
                 sqlCMD.Connection = sqlConn;
-                sqlCMD.CommandText = ""; //inserir a procedure criada para inserção
+                sqlCMD.CommandText = "spinserir_categoria"; //inserir a procedure criada para inserção
                 sqlCMD.CommandType = CommandType.StoredProcedure; //executar a procedure
 
                 //Inicializando os parametros do BD
@@ -105,7 +105,7 @@ namespace CamadaDados
 
                 SqlCommand sqlCMD = new SqlCommand();
                 sqlCMD.Connection = sqlConn;
-                sqlCMD.CommandText = ""; 
+                sqlCMD.CommandText = "speditar_categoria"; 
                 sqlCMD.CommandType = CommandType.StoredProcedure; //executar a procedure
 
                 //Inicializando os parametros do BD
@@ -164,7 +164,7 @@ namespace CamadaDados
 
                 SqlCommand sqlCMD = new SqlCommand();
                 sqlCMD.Connection = sqlConn;
-                sqlCMD.CommandText = "";
+                sqlCMD.CommandText = "spexcluir_categoria";
                 sqlCMD.CommandType = CommandType.StoredProcedure; //executar a procedure
 
                 //Inicializando os parametros do BD
@@ -207,7 +207,7 @@ namespace CamadaDados
                 sqlConn.ConnectionString = Conection.Cn;
                 SqlCommand sqlCMD = new SqlCommand();
                 sqlCMD.Connection = sqlConn;
-                sqlCMD.CommandText = "";
+                sqlCMD.CommandText = "spmostrar_categoria";
                 sqlCMD.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter sqlDat = new SqlDataAdapter(sqlCMD); //mostrar os dados
                 sqlDat.Fill(DtResultado);
@@ -232,10 +232,8 @@ namespace CamadaDados
                 sqlConn.ConnectionString = Conection.Cn;
                 SqlCommand sqlCMD = new SqlCommand();
                 sqlCMD.Connection = sqlConn;
-                sqlCMD.CommandText = "";
+                sqlCMD.CommandText = "spbuscar_nome";
                 sqlCMD.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter sqlDat = new SqlDataAdapter(sqlCMD); //mostrar os dados
-                sqlDat.Fill(DtResultado);
 
                 SqlParameter ParTextoBuscar = new SqlParameter();
                 ParTextoBuscar.ParameterName = "@textobuscar";
@@ -244,6 +242,8 @@ namespace CamadaDados
                 ParTextoBuscar.Value = Categoria.TextoBuscar;
                 sqlCMD.Parameters.Add(ParTextoBuscar);
 
+                SqlDataAdapter sqlDat = new SqlDataAdapter(sqlCMD); //mostrar os dados
+                sqlDat.Fill(DtResultado);
 
             }
             catch (Exception ex)

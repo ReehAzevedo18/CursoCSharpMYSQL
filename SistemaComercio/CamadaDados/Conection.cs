@@ -9,7 +9,6 @@ namespace CamadaDados
     //Classe de conexão com o banco de dados
     class Conection
     {
-        //Falta preencher o nome do BD e o nome do banco criado
-        public static String Cn = "Data Source = ; Initial Catalog = dbcomercio; Integrated Security=true";
+        public static String Cn = "Data Source = LAPTOP-MJR4H35I\\SQLEXPRESS; Initial Catalog = dbcomercio; Integrated Security=true; User Id=sa; Password=123456";
     }
 }

@@ -57,8 +57,42 @@ namespace CamadaApresentacao
         {
             if(this.ehnovo || this.ehEditar)
             {
-
+                //Retirar de apenas leitura quando for novo ou editar
+                this.habilitar(true);
+                this.btnNovo.Enabled = false; //se já está dentro da função novo, ele não pode estar habilitado
+                this.btnSalvar.Enabled = true;
+                this.btnEditar.Enabled = false;
+                this.btnCancelar.Enabled = true;
             }
+            else
+            {
+                this.habilitar(false);
+                this.btnNovo.Enabled = true;
+                this.btnSalvar.Enabled = false;
+                this.btnEditar.Enabled = true;
+                this.btnCancelar.Enabled = false;
+            }
+        }
+
+        //Ocultar as colunas do grid
+        private void ocultarColunasGrid()
+        {
+            this.dataLista.Columns[0].Visible = false; //coluna deletar
+            //this.dataLista.Columns[1].Visible = false; //coluna do ID
+        }
+
+        private void Mostrar()
+        {
+            this.dataLista.DataSource = NCategoria.Mostrar(); //mostrar os dados no grid da função na camada de negócios
+            this.ocultarColunasGrid();
+            lblTotal.Text = "Total de registros: " + Convert.ToString(dataLista.Rows.Count); //total de registros no BD
+        }
+
+        private void BuscarNome()
+        {
+            this.dataLista.DataSource = NCategoria.BuscarNome(this.txtbuscar.Text); //mostrar os dados no grid da função na camada de negócios
+            this.ocultarColunasGrid();
+            lblTotal.Text = "Total de registros: " + Convert.ToString(dataLista.Rows.Count); //total de registros no BD
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -73,7 +107,23 @@ namespace CamadaApresentacao
 
         private void frmCategorias_Load(object sender, EventArgs e)
         {
+            this.Top = 0;
+            this.Left = 0;
+            this.Mostrar();
+            this.habilitar(false);
+            this.habilitarBotoes();
 
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            this.BuscarNome();
+        }
+
+        private void txtbuscar_TextChanged(object sender, EventArgs e)
+        {
+            //textChanged = realiza a busca de acordo com o que é digitado
+            this.BuscarNome();
         }
     }
 }
