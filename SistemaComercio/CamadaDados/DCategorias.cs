@@ -8,7 +8,7 @@ using System.Data;
 
 namespace CamadaDados
 {
-    class DCategorias
+    public class DCategorias
     {
         private int _IdCategoria;
         private string _Nome;
@@ -88,8 +88,9 @@ namespace CamadaDados
                 if (sqlConn.State == ConnectionState.Open) //verifiquei o status da conexão, se for ABERTA
                     sqlConn.Close(); //será fechada
             }
-            
-           
+            return resp;
+
+
         }
 
         public string Editar(DCategorias Categoria)
@@ -145,6 +146,8 @@ namespace CamadaDados
                 if (sqlConn.State == ConnectionState.Open) //verifiquei o status da conexão, se for ABERTA
                     sqlConn.Close(); //será fechada
             }
+            return resp;
+
 
         }
 
@@ -188,12 +191,13 @@ namespace CamadaDados
                 if (sqlConn.State == ConnectionState.Open) //verifiquei o status da conexão, se for ABERTA
                     sqlConn.Close(); //será fechada
             }
+            return resp;
 
 
         }
 
         //Mostrar dados do banco
-        public DataTable Mostrar(DCategorias Categoria)
+        public DataTable Mostrar()
         {
             DataTable DtResultado = new DataTable("categoria"); //Instanciando a tabela categoria
             SqlConnection sqlConn = new SqlConnection();
@@ -213,10 +217,12 @@ namespace CamadaDados
             {
                 DtResultado = null;
             }
+            return DtResultado;
+
         }
 
         //Método Buscar Nome
-        public string BuscarNome(DCategorias Categoria)
+        public DataTable BuscarNome(DCategorias Categoria)
         {
             DataTable DtResultado = new DataTable("categoria"); //Instanciando a tabela categoria
             SqlConnection sqlConn = new SqlConnection();
@@ -244,7 +250,7 @@ namespace CamadaDados
             {
                 DtResultado = null;
             }
-
+            return DtResultado;
 
         }
     }
