@@ -69,7 +69,7 @@ namespace CamadaDados
                 ParDescricao.ParameterName = "@descricao";
                 ParDescricao.SqlDbType = SqlDbType.VarChar;
                 ParDescricao.Size = 256;
-                ParDescricao.Value = Categoria.Nome;
+                ParDescricao.Value = Categoria.Descricao;
                 sqlCMD.Parameters.Add(ParDescricao);
 
                 //Executar comandos
